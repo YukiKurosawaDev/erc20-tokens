@@ -1,0 +1,41 @@
+{
+  "name": "erc20-generator",
+  "version": "4.6.0",
+  "description": "The most used Smart Contract Generator for ERC20 Token.",
+  "files": [
+    "contracts",
+    "test"
+  ],
+  "scripts": {},
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart",
+    "contracts",
+    "token",
+    "erc20",
+    "erc1363"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vittominacori/erc20-generator.git"
+  },
+  "homepage": "https://vittominacori.github.io/erc20-generator",
+  "bugs": {
+    "url": "https://github.com/vittominacori/erc20-generator/issues"
+  },
+  "author": "Vittorio Minacori",
+  "contributors": [
+    {
+      "name": "Vittorio Minacori",
+      "url": "https://github.com/vittominacori"
+    }
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "hardhat": "^2.3.3"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^4.1.0"
+  }
+}
