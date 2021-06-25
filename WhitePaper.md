@@ -18,7 +18,7 @@ Decimals: 0 <br/>
 Supply: 1,000,000  <br/>
 Chain: Ethereum Main Network<br/>
 Tax (per transaction when swap): <br/>
-Swap Price: 0.001 per ETH</br>
+Swap Price: 0.001 ETH per </br>
 
 
 ---
@@ -28,7 +28,7 @@ Decimals: 0 <br/>
 Supply: 1,000,000 <br/>
 Chain: Binance Smart Chain<br/>
 Tax (per transaction when swap): </br>
-Swap Price: 0.001 per BNB</br>
+Swap Price: 0.001 BNB per </br>
 
 ## Token Policy
 1. No Burn
