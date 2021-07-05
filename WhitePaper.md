@@ -18,7 +18,7 @@ Decimals: 0 <br/>
 Supply: 1,000,000 YUKIT <br/>
 Chain: Ethereum Main Network<br/>
 Tax (per transaction when swap): 0.05 ETH or 50 YUKIT <br/>
-Swap Price: 0.001 ETH per </br>
+Swap Price: 0.001 ETH per YUKIT</br>
 
 
 ---
@@ -28,7 +28,7 @@ Decimals: 0 <br/>
 Supply: 1,000,000 WYUKI <br/>
 Chain: Binance Smart Chain<br/>
 Tax (per transaction when swap): 0.01 BNB or 10 WYUKI</br>
-Swap Price: 0.001 BNB per </br>
+Swap Price: 0.001 BNB per WYUKI</br>
 
 ## Token Policy
 1. No Burn
