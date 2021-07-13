@@ -12,23 +12,23 @@ Version 0.1
 
 
 ---
-Full Name: <br/>
-Symbol: <br/>
+Full Name: Yuki Network Token <br/>
+Symbol: YUKIT <br/>
 Decimals: 0 <br/>
-Supply: 1,000,000  <br/>
+Supply: 1,000,000 YUKIT <br/>
 Chain: Ethereum Main Network<br/>
-Tax (per transaction when swap): <br/>
-Swap Price: 0.001 per ETH</br>
+Tax (per transaction when swap): 0.05 ETH or 50 YUKIT <br/>
+Swap Price: 0.001 ETH per YUKIT</br>
 
 
 ---
-Full Name: <br/>
-Symbol: <br/>
+Full Name: Wrapped YUKIT<br/>
+Symbol: WYUKI <br/>
 Decimals: 0 <br/>
-Supply: 1,000,000 <br/>
+Supply: 1,000,000 WYUKI <br/>
 Chain: Binance Smart Chain<br/>
-Tax (per transaction when swap): </br>
-Swap Price: 0.001 per BNB</br>
+Tax (per transaction when swap): 0.01 BNB or 10 WYUKI</br>
+Swap Price: 0.001 BNB per WYUKI</br>
 
 ## Token Policy
 1. No Burn
@@ -39,7 +39,14 @@ Swap Price: 0.001 per BNB</br>
 6. Get more tokens when profit notice announced manually (via DApp)
 
 ## Contracts
-1. <No Name>:
-2. <No Name>:
-3. <No Name>/ETH Swap:
-4. <No Name>/BNB Swap: 
+1. YUKIT:
+2. WYUKI:
+3. YUKIT/ETH Swap:
+4. WYUKI/BNB Swap: 
+
+## Support the project
+Send cryptos to following addresses on BSC chain or ETH main chain:<br/>
+0x90b91f75f37a770ce1eB0f5A202dc2a5CC040613<br/>
+0x0ff64DEB206Dd1B147b48DA4C2ace73FaBBcc690<br/>
+Accept ETH, USDT, BNB, ETC only<br/>
+
