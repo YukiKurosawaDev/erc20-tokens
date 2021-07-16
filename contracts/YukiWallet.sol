@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "./YERC20.sol";
 
-contract Test {
+contract YukiWalletV2 {
     
     address owner;
     
@@ -12,7 +12,7 @@ contract Test {
     }
     
     function name() public pure returns (string memory){
-        return "Yuki's Chain Wallet";
+        return "Yuki Chain Wallet V2";
     }
     
     function symbol() public pure returns (string memory){
@@ -43,7 +43,7 @@ contract Test {
         return owner.balance;
     }
     
-     function balanceOfYukiToken(address token) public view returns (uint256){
+    function balanceOfYukiToken(address token) public view returns (uint256){
         YERC20 yerc20=YERC20(token);
         return yerc20.balanceOf(owner);
     }
@@ -62,13 +62,13 @@ contract Test {
     }
     
     function transferBalanceToYuki(uint256 money) public {
-        require(money>=address(this).balance);
+        require(money<=address(this).balance);
         payable(owner).transfer(money);
     }
     
     function transferTokenToYuki(address token,uint256 money) public{
         YERC20 yerc20=YERC20(token);
-        require(money>=yerc20.balanceOf(address(this)));
+        require(money<=yerc20.balanceOf(address(this)));
         yerc20.transfer(address(owner),money);
     }
     
