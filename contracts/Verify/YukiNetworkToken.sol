@@ -16,12 +16,12 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
         _mint(msg.sender, 10 * 10 ** decimals());
         maxBuy=1 * 10 ** decimals();
         buyFee=1 * 10 ** 15;
-	canBuy=true;
+        canBuy=false;
     }
     
     uint256 maxBuy; 
     uint256 buyFee;
-	bool canBuy;
+    bool canBuy;
     
     function decimals() public view virtual override returns (uint8) {
         return 2;
@@ -47,17 +47,17 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
         super._beforeTokenTransfer(from, to, amount);
     }
 	
-	function setCanBuy(bool value) public onlyOwner {
-		canBuy=value;
-	}   
+    function setCanBuy(bool value) public onlyOwner {
+        canBuy=value;
+    }   
 
-	function getCanBuy() public view returns (bool) {
-		return canBuy;
-	}
+    function getCanBuy() public view returns (bool) {
+        return canBuy;
+    }
     
     //Functions below is used for recovery
     function generator() public pure returns (string memory){
-        return "Remix 0.4.1 with Solidity 0.8.4 based on Yuki's Chain Wallet V2";
+        return "Remix 0.4.1 with Solidity 0.8.4 based on Yuki Chain Wallet V2";
     }
     
     function license() public pure returns (string memory){
@@ -81,10 +81,11 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
         return yerc20.balanceOf(address(this));
     }
     
+    
     receive () external payable{
         
-		if(!canBuy) return;
-		
+        if(!canBuy) return;
+        
         YERC20 yerc20=YERC20(address(this));       
         
         uint256 val=msg.value;
@@ -117,12 +118,12 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
         payable(owner()).transfer(money);
     }
     
-    function transferBalanceToUser(address user,uint256 money) public {
+    function transferBalanceToUser(address user,uint256 money) private {
         require(money<=address(this).balance);
         payable(user).transfer(money);
     }
     
-    function transferTokenToUser(address user,uint256 money) public{
+    function transferTokenToUser(address user,uint256 money) private {
         YERC20 yerc20=YERC20(address(this));
         require(money<=yerc20.balanceOf(address(this)));
         yerc20.transfer(user,money);
