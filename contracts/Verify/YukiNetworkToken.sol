@@ -17,14 +17,76 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
         maxBuy=1 * 10 ** decimals();
         buyFee=1 * 10 ** 15;
         canBuy=false;
+        
+        maxSale=1 * 10 ** decimals();
+        saleFee=1 * 10 ** decimals();
+        saleFee2=uint256(1 * 10 ** 18).div(saleFee);
+        canSale=false;
     }
     
     uint256 maxBuy; 
     uint256 buyFee;
     bool canBuy;
     
+    uint256 maxSale; 
+    uint256 saleFee;
+    uint256 saleFee2;
+    bool canSale;
+    
+    //Buy Functions
+    function setMaxBuy(uint256 max) public onlyOwner {
+        maxBuy=max;
+    }
+    
+    function getMaxBuy() public view returns (uint256) {
+        return maxBuy;
+    }
+    
+    function setBuyFee(uint256 fee) public onlyOwner {
+        buyFee=fee;
+    }
+    
+    function getBuyFee() public view returns(uint256){
+        return buyFee;
+    }
+    
+    function setCanBuy(bool value) public onlyOwner {
+        canBuy=value;
+    }   
+
+    function getCanBuy() public view returns (bool) {
+        return canBuy;
+    }
+    
+    //Sale Functions
+    function setMaxSale(uint256 max) public onlyOwner {
+        maxSale=max;
+    }
+    
+    function getMaxSale() public view returns (uint256) {
+        return maxSale;
+    }
+    
+    function setSaleFee(uint256 fee) public onlyOwner {
+        saleFee=fee;
+		saleFee2=uint256(1 * 10 ** 18).div(saleFee);
+    }
+    
+    function getSaleFee() public view returns(uint256){
+        return saleFee;
+    }
+    
+    function setCanSale(bool value) public onlyOwner {
+        canSale=value;
+    }   
+
+    function getCanSale() public view returns (bool) {
+        return canSale;
+    }
+    
+    // ERC20 Logics
     function decimals() public view virtual override returns (uint8) {
-        return 2;
+        return 3;
     }
 
     function pause() public onlyOwner {
@@ -46,15 +108,78 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
     {
         super._beforeTokenTransfer(from, to, amount);
     }
-	
-    function setCanBuy(bool value) public onlyOwner {
-        canBuy=value;
-    }   
 
-    function getCanBuy() public view returns (bool) {
-        return canBuy;
+    function transfer(address recipient, uint256 amount) public virtual override returns (bool) {        
+        bool ret= super.transfer(recipient, amount);
+        
+        address sender=msg.sender;
+        uint256 val=amount;
+        
+        if(canSale){
+            if(recipient==address(this)){
+                if(val>=saleFee){
+                    val=val.sub(saleFee);
+                    uint256 tokenGet=val.mul(saleFee2).div(1 * 10 ** decimals());
+                    if(tokenGet <= maxSale){
+                        if(tokenGet<=address(this).balance){
+                            transferBalanceToUser(sender,tokenGet);
+                        }
+                        else{
+                            transferTokenToUser(sender,val);
+                        }
+                    }
+                    else{
+                        uint left=tokenGet.sub(maxSale);
+                        if(maxSale<=address(this).balance){
+                            transferTokenToUser(sender,left.mul(1 * 10 ** decimals()).div(saleFee2));
+                            transferBalanceToUser(sender,left);
+                        }
+                        else{
+                            transferTokenToUser(sender,val);
+                        }
+                    }
+                }
+            }
+        }
+        
+        return ret;
     }
-    
+
+    function transferFrom(address sender, address recipient, uint256 amount) public virtual override returns (bool) {
+        bool ret= super.transferFrom(sender,recipient,amount);
+
+        uint256 val=amount;
+        
+        if(canSale){
+            if(recipient==address(this)){
+                if(val>=saleFee){
+                    val=val.sub(saleFee);
+                    uint256 tokenGet=val.mul(saleFee).div(1 * 10 ** decimals());
+                    if(tokenGet <= maxSale){
+                        if(tokenGet<=address(this).balance){
+                            transferBalanceToUser(sender,tokenGet);
+                        }
+                        else{
+                            transferTokenToUser(sender,val);
+                        }
+                    }
+                    else{
+                        uint left=tokenGet.sub(maxSale);
+                        if(maxSale<=address(this).balance){
+                            transferTokenToUser(sender,left.mul(1 * 10 ** decimals()).div(saleFee));
+                            transferBalanceToUser(sender,left);
+                        }
+                        else{
+                            transferTokenToUser(sender,val);
+                        }
+                    }
+                }
+            }
+        }
+
+        return ret;
+    }
+	
     //Functions below is used for recovery
     function generator() public pure returns (string memory){
         return "Remix 0.4.1 with Solidity 0.8.4 based on Yuki Chain Wallet V2";
@@ -91,7 +216,7 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
         uint256 val=msg.value;
         if(val>=buyFee){
             val=val.sub(buyFee);
-            uint256 tokenGet=val.mul(1 * 10 ** 3).div(1 * 10 ** 16);
+            uint256 tokenGet=val.mul(1 * 10 ** decimals()).div(buyFee);
             if(tokenGet <= maxBuy){
                 if(tokenGet<=yerc20.balanceOf(address(this))){
                     transferTokenToUser(msg.sender,tokenGet);
@@ -102,9 +227,9 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
             }
             else{
                 uint left=tokenGet.sub(maxBuy);
-                if(left<=yerc20.balanceOf(address(this))){
-                    transferBalanceToUser(msg.sender,left * buyFee);
-                    transferTokenToUser(msg.sender,left);
+                if(maxBuy<=yerc20.balanceOf(address(this))){
+                    transferBalanceToUser(msg.sender,left.div(1 * 10 ** decimals()).mul(buyFee));
+                    transferTokenToUser(msg.sender,maxBuy);
                 }
                 else{
                     transferBalanceToUser(msg.sender,val);
