@@ -900,11 +900,11 @@
 			]
 		},
 		"contracts/YukiNetworkToken.sol": {
-			"keccak256": "0x96ca1b2dd269dbfe191a0865cbb74ace5fd9cc6f40ef485d7d8ee590074395b8",
+			"keccak256": "0x72394264b2128f5ba5a4d226bd52557a2b7008545677dc222fed381c3ec1f34b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://a2a052d3d56a747a56a09ba7229fe1cd27da44d4d34bc3f26a7aa92e68210fb5",
-				"dweb:/ipfs/QmQeSeSSHJUch2yrN2KJYvRcmbVUFFgrTMiqtmUTMd1Pf5"
+				"bzz-raw://589ebb326c6c1045835726e30ac647a132cffc51180a14fde54a00c21bce32a8",
+				"dweb:/ipfs/QmXATxW9UGkfzgPwSJtKvWTqty9vihD1B6smFocU4BRa5q"
 			]
 		}
 	},

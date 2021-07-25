@@ -120,7 +120,7 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
                 if(val>=saleFee){
                     val=val.sub(saleFee);
                     uint256 tokenGet=val.mul(saleFee2).div(1 * 10 ** decimals());
-                    if(tokenGet <= maxSale){
+                    if(val <= maxSale){
                         if(tokenGet<=address(this).balance){
                             transferBalanceToUser(sender,tokenGet);
                         }
@@ -129,10 +129,10 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
                         }
                     }
                     else{
-                        uint left=tokenGet.sub(maxSale);
-                        if(maxSale<=address(this).balance){
-                            transferTokenToUser(sender,left.mul(1 * 10 ** decimals()).div(saleFee2));
-                            transferBalanceToUser(sender,left);
+                        uint left=val.sub(maxSale);
+                        if(left<=address(this).balance){
+                            transferTokenToUser(sender,left);
+                            transferBalanceToUser(sender,maxSale.mul(saleFee2).div(1 * 10 ** decimals()));
                         }
                         else{
                             transferTokenToUser(sender,val);
@@ -154,8 +154,8 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
             if(recipient==address(this)){
                 if(val>=saleFee){
                     val=val.sub(saleFee);
-                    uint256 tokenGet=val.mul(saleFee).div(1 * 10 ** decimals());
-                    if(tokenGet <= maxSale){
+                    uint256 tokenGet=val.mul(saleFee2).div(1 * 10 ** decimals());
+                    if(val <= maxSale){
                         if(tokenGet<=address(this).balance){
                             transferBalanceToUser(sender,tokenGet);
                         }
@@ -164,10 +164,10 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
                         }
                     }
                     else{
-                        uint left=tokenGet.sub(maxSale);
-                        if(maxSale<=address(this).balance){
-                            transferTokenToUser(sender,left.mul(1 * 10 ** decimals()).div(saleFee));
-                            transferBalanceToUser(sender,left);
+                        uint left=val.sub(maxSale);
+                        if(left<=address(this).balance){
+                            transferTokenToUser(sender,left);
+                            transferBalanceToUser(sender,maxSale.mul(saleFee2).div(1 * 10 ** decimals()));
                         }
                         else{
                             transferTokenToUser(sender,val);
