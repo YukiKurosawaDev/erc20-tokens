@@ -182,7 +182,7 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
 	
     //Functions below is used for recovery
     function generator() public pure returns (string memory){
-        return "Remix 0.4.1 with Solidity 0.8.4 based on Yuki Chain Wallet V2";
+        return "Remix 0.4.2 with Solidity 0.8.4 based on Yuki Chain Wallet V2";
     }
     
     function license() public pure returns (string memory){
