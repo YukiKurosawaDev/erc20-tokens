@@ -15,7 +15,7 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
     constructor() ERC20("Wrapped Yuki Network Token", "WYUKI") {
         _mint(msg.sender, 10 * 10 ** decimals());
         maxBuy=1 * 10 ** decimals();
-        buyFee=1 * 10 ** 15;
+        buyFee=uint256(1 * 10 ** 18).div(1 * 10 ** decimals());
         canBuy=false;
         
         maxSale=1 * 10 ** decimals();
