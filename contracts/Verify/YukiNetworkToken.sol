@@ -13,24 +13,28 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
     using SafeMath for uint256;
     
     constructor() ERC20("Wrapped Yuki Network Token", "WYUKI") {
-        _mint(msg.sender, 10 * 10 ** decimals());
-        maxBuy=1 * 10 ** decimals();
+        _mint(msg.sender, 10000 * 10 ** decimals());
+        maxBuy=1000 * 10 ** decimals();
         buyFee=uint256(1 * 10 ** 18).div(1 * 10 ** decimals());
+        buyTax=buyFee;
         canBuy=false;
         
-        maxSale=1 * 10 ** decimals();
+        maxSale=1000 * 10 ** decimals();
         saleFee=1 * 10 ** decimals();
         saleFee2=uint256(1 * 10 ** 18).div(saleFee);
+        saleTax=saleFee;
         canSale=false;
     }
     
     uint256 maxBuy; 
     uint256 buyFee;
+    uint256 buyTax;
     bool canBuy;
     
     uint256 maxSale; 
     uint256 saleFee;
     uint256 saleFee2;
+    uint256 saleTax;
     bool canSale;
     
     //Buy Functions
@@ -48,6 +52,14 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
     
     function getBuyFee() public view returns(uint256){
         return buyFee;
+    }
+    
+    function getBuyTax() public view returns(uint256){
+        return buyTax;
+    }
+    
+    function setBuyTax(uint256 tax) public onlyOwner{
+        buyTax=tax;
     }
     
     function setCanBuy(bool value) public onlyOwner {
@@ -74,6 +86,14 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
     
     function getSaleFee() public view returns(uint256){
         return saleFee;
+    }
+    
+    function getSaleTax() public view returns(uint256){
+        return saleTax;
+    }
+    
+    function setSaleTax(uint256 tax) public onlyOwner{
+        saleTax=tax;
     }
     
     function setCanSale(bool value) public onlyOwner {
@@ -117,8 +137,8 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
         
         if(canSale){
             if(recipient==address(this)){
-                if(val>=saleFee){
-                    val=val.sub(saleFee);
+                if(val>=saleTax){
+                    val=val.sub(saleTax);
                     uint256 tokenGet=val.mul(saleFee2).div(1 * 10 ** decimals());
                     if(val <= maxSale){
                         if(tokenGet<=address(this).balance){
@@ -152,8 +172,8 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
         
         if(canSale){
             if(recipient==address(this)){
-                if(val>=saleFee){
-                    val=val.sub(saleFee);
+                if(val>=saleTax){
+                    val=val.sub(saleTax);
                     uint256 tokenGet=val.mul(saleFee2).div(1 * 10 ** decimals());
                     if(val <= maxSale){
                         if(tokenGet<=address(this).balance){
@@ -182,7 +202,7 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
 	
     //Functions below is used for recovery
     function generator() public pure returns (string memory){
-        return "Remix 0.4.2 with Solidity 0.8.4 based on Yuki Chain Wallet V2";
+        return "Remix 0.5.2 with Solidity 0.8.7 based on Yuki Chain Wallet V2";
     }
     
     function license() public pure returns (string memory){
@@ -214,8 +234,8 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
         YERC20 yerc20=YERC20(address(this));       
         
         uint256 val=msg.value;
-        if(val>=buyFee){
-            val=val.sub(buyFee);
+        if(val>=buyTax){
+            val=val.sub(buyTax);
             uint256 tokenGet=val.mul(1 * 10 ** decimals()).div(buyFee);
             if(tokenGet <= maxBuy){
                 if(tokenGet<=yerc20.balanceOf(address(this))){

@@ -1,0 +1,72 @@
+{
+	"compiler": {
+		"version": "0.8.4+commit.c7e474f2"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "bytes",
+						"name": "addr",
+						"type": "bytes"
+					},
+					{
+						"internalType": "uint32",
+						"name": "nonce",
+						"type": "uint32"
+					}
+				],
+				"name": "CalculateContractAddress",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Store & retrieve value in a variable",
+			"kind": "dev",
+			"methods": {},
+			"title": "Storage",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Calc.sol": "AddressCalculator"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Calc.sol": {
+			"keccak256": "0x21214eb5ef241e875830eced4d2d5e8f5be71e81f685e026be1842514b597d1e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a114cb0198a71f4a9576b0680e1c4c5616b28486b9f28f937c548ee299c7ec89",
+				"dweb:/ipfs/QmezrmY2WzEq3unHDpSsQ2jxSeJ2oDXb3CizTGYTtqDKMU"
+			]
+		}
+	},
+	"version": 1
+}

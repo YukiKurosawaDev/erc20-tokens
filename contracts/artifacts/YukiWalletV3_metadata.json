@@ -357,7 +357,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/YukiWallet.sol": "YukiWalletV2"
+			"contracts/YukiWallet.sol": "YukiWalletV3"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -380,11 +380,11 @@
 			]
 		},
 		"contracts/YukiWallet.sol": {
-			"keccak256": "0xf7fbb52e2136586b16a974bdb6ff8fa55acc315ecb577ce77b63e5618f11ade3",
+			"keccak256": "0xc27705b1c26e72771bb827f76f6f1f548e148981aae80f81ee1d764e8d441720",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d820da260feecaeb484ce9bcb4ae7369294eb03ffebf4a5646dddc001e49cb43",
-				"dweb:/ipfs/QmYfbvuyvX7BdDatToasYPZfUQKDHovRsvdWkYMKBRQg6x"
+				"bzz-raw://2f01ebece16f01d333735b6ea3072185fac4c613aeb0caa4dd848f90b6deadc4",
+				"dweb:/ipfs/QmSANpyw6pL6fEKjhy9g432Yh1oRwzcrGeGL2bf7uzsmuh"
 			]
 		}
 	},

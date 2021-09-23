@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.4+commit.c7e474f2"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -326,6 +326,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "getBuyTax",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "getCanBuy",
 				"outputs": [
 					{
@@ -379,6 +392,19 @@
 			{
 				"inputs": [],
 				"name": "getSaleFee",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getSaleTax",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -532,6 +558,19 @@
 			{
 				"inputs": [
 					{
+						"internalType": "uint256",
+						"name": "tax",
+						"type": "uint256"
+					}
+				],
+				"name": "setBuyTax",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "bool",
 						"name": "value",
 						"type": "bool"
@@ -590,6 +629,19 @@
 					}
 				],
 				"name": "setSaleFee",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "tax",
+						"type": "uint256"
+					}
+				],
+				"name": "setSaleTax",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -815,7 +867,7 @@
 		"compilationTarget": {
 			"contracts/LittleYukiToken.sol": "LittleYukiToken"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -892,11 +944,11 @@
 			]
 		},
 		"contracts/LittleYukiToken.sol": {
-			"keccak256": "0x1d172139a3ea85e5250cd6465b9814c70519880346b75f08f1882bb4d8d36e6f",
+			"keccak256": "0x574432d4aa3a30ab8633b7c186ec7ccc93f701cb4da22798e3d6ca3a0b0929c2",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4c26959180f27958ec3d81e78c800f67eadd08f92d73f39d2bb55b03a84d6fbf",
-				"dweb:/ipfs/QmVomdUKnZpvdvwSeGYByo8TeGUCkcCDXxunQeEgDX5UZT"
+				"bzz-raw://d76c2afa457145c1fa13dc9e99f1fbd9b130247368fc6ae2d449b3b9abf79f43",
+				"dweb:/ipfs/QmYvU6Sc49NAiAnTcX4cxsmaBABxsnVsKseHaDtG3j17Zz"
 			]
 		},
 		"contracts/YERC20.sol": {
