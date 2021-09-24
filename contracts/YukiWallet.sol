@@ -16,27 +16,27 @@ contract YukiWalletV3 {
     }
     
     function symbol() public pure returns (string memory){
-        return "YUKIWALLETV3";
+        return "WALLETV3";
     }
-	
-	function decimals() public view virtual returns (uint8) {
+    
+    function decimals() public view virtual returns (uint8) {
         return 0;
     }
-	
+    
     function totalSupply() public view virtual returns (uint256) {
         return 1;
     }
 
     
     function balanceOf(address account) public view virtual returns (uint256) {
-		if(account==owner)
-		{
-			return 1;
-		}
-		else
-		{
-		 return 0;
-		}
+        if(account==owner)
+        {
+            return 1;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     function transfer(address recipient, uint256 amount) public virtual returns (bool) {
@@ -98,8 +98,8 @@ contract YukiWalletV3 {
         require(money<=yerc20.balanceOf(address(this)));
         yerc20.transfer(address(owner),money);
     }
-	
-	function transferBalanceToUser(address user,uint256 money) public {
+    
+    function transferBalanceToUser(address user,uint256 money) public {
         require(money<=address(this).balance);
         payable(user).transfer(money);
     }
