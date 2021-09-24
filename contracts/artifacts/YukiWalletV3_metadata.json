@@ -11,6 +11,31 @@
 				"type": "constructor"
 			},
 			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "value",
+						"type": "uint256"
+					}
+				],
+				"name": "Transfer",
+				"type": "event"
+			},
+			{
 				"inputs": [],
 				"name": "addressOfYuki",
 				"outputs": [
@@ -380,11 +405,11 @@
 			]
 		},
 		"contracts/YukiWallet.sol": {
-			"keccak256": "0xc27705b1c26e72771bb827f76f6f1f548e148981aae80f81ee1d764e8d441720",
+			"keccak256": "0x8e04ed156163d1efc91571d9874315ed7e26d931dc874bcad0e44890562066ca",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://2f01ebece16f01d333735b6ea3072185fac4c613aeb0caa4dd848f90b6deadc4",
-				"dweb:/ipfs/QmSANpyw6pL6fEKjhy9g432Yh1oRwzcrGeGL2bf7uzsmuh"
+				"bzz-raw://21027ef501235dbfb63831b6ae5b3db10ee17e927dd2b468b8a5115c79a1ac64",
+				"dweb:/ipfs/QmXPRid9GURawoWe4e1RKpywgEHQ564sy91bh3ovePtZui"
 			]
 		}
 	},

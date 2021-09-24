@@ -6,9 +6,12 @@ import "./YERC20.sol";
 contract YukiWalletV3 {
     
     address owner;
+	
+    event Transfer(address indexed from, address indexed to, uint256 value);
     
     constructor() {
         owner=msg.sender;
+        emit Transfer(address(0), address(owner), 1);
     }
     
     function name() public pure returns (string memory){
