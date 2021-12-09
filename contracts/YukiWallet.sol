@@ -3,11 +3,16 @@ pragma solidity ^0.8.0;
 
 import "./YERC20.sol";
 
-contract YukiWalletV3 {
+contract YukiWalletV4 {
     
     address owner;
-	
+    
     event Transfer(address indexed from, address indexed to, uint256 value);
+    
+    modifier onlyOwner() {
+        require(owner == msg.sender, "Ownable: caller is not the owner");
+        _;
+    }
     
     constructor() {
         owner=msg.sender;
@@ -15,11 +20,11 @@ contract YukiWalletV3 {
     }
     
     function name() public pure returns (string memory){
-        return "Yuki Chain Wallet V3";
+        return "Yuki Chain Wallet V4";
     }
     
     function symbol() public pure returns (string memory){
-        return "WALLETV3";
+        return "WALLETV4";
     }
     
     function decimals() public view virtual returns (uint8) {
@@ -91,23 +96,23 @@ contract YukiWalletV3 {
         
     }
     
-    function transferBalanceToYuki(uint256 money) public {
+    function transferBalanceToYuki(uint256 money) public onlyOwner {
         require(money<=address(this).balance);
         payable(owner).transfer(money);
     }
     
-    function transferTokenToYuki(address token,uint256 money) public{
+    function transferTokenToYuki(address token,uint256 money) public onlyOwner {
         YERC20 yerc20=YERC20(token);
         require(money<=yerc20.balanceOf(address(this)));
         yerc20.transfer(address(owner),money);
     }
     
-    function transferBalanceToUser(address user,uint256 money) public {
+    function transferBalanceToUser(address user,uint256 money) public onlyOwner {
         require(money<=address(this).balance);
         payable(user).transfer(money);
     }
     
-    function transferTokenToUser(address user,uint256 money) public {
+    function transferTokenToUser(address user,uint256 money) public onlyOwner {
         YERC20 yerc20=YERC20(address(this));
         require(money<=yerc20.balanceOf(address(this)));
         yerc20.transfer(user,money);

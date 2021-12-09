@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.4+commit.c7e474f2"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -312,84 +312,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "getBuyFee",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getCanBuy",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getCanSale",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getMaxBuy",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getMaxSale",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "getSaleFee",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -517,84 +439,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "fee",
-						"type": "uint256"
-					}
-				],
-				"name": "setBuyFee",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "bool",
-						"name": "value",
-						"type": "bool"
-					}
-				],
-				"name": "setCanBuy",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "bool",
-						"name": "value",
-						"type": "bool"
-					}
-				],
-				"name": "setCanSale",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "max",
-						"type": "uint256"
-					}
-				],
-				"name": "setMaxBuy",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "max",
-						"type": "uint256"
-					}
-				],
-				"name": "setMaxSale",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "fee",
-						"type": "uint256"
-					}
-				],
-				"name": "setSaleFee",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"inputs": [],
 				"name": "symbol",
 				"outputs": [
@@ -666,6 +510,24 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "money",
+						"type": "uint256"
+					}
+				],
+				"name": "transferBalanceToUser",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
 						"internalType": "uint256",
 						"name": "money",
 						"type": "uint256"
@@ -714,6 +576,24 @@
 					}
 				],
 				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "money",
+						"type": "uint256"
+					}
+				],
+				"name": "transferTokenToUser",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -815,7 +695,7 @@
 		"compilationTarget": {
 			"contracts/YukiNetworkToken.sol": "YukiNetworkToken"
 		},
-		"evmVersion": "istanbul",
+		"evmVersion": "london",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -900,11 +780,11 @@
 			]
 		},
 		"contracts/YukiNetworkToken.sol": {
-			"keccak256": "0x04a437a3162902f9bc5838f93c53dbcb0a330a96a91e3cad41df76300b3ee278",
+			"keccak256": "0x1c7bb0d1d090d2a110644841ba3224de0cd12b117ed153026d928e20318a0d7f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://661d4ab6da6f39521c0decc5ca6b1ec712829e57e50b6147995b2276864e6f41",
-				"dweb:/ipfs/QmefEkXGbNbrgioXML3ffvJBJE3kdNCrHf875RjVaBwwHs"
+				"bzz-raw://3dacdd33c4a57fc6e1e204dfb3c3dc68bffbd89e7b6aa0dea40ed25206fcefd9",
+				"dweb:/ipfs/QmT7oM8GtrYW4gg5nRZo4Mc6Gc59fq5recxw48JUUgAkoR"
 			]
 		}
 	},
