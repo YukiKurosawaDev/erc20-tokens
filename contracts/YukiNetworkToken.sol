@@ -12,8 +12,8 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
     
     using SafeMath for uint256;
     
-    constructor() ERC20("Wrapped Yuki Network Token", "WYUKI") {
-        _mint(msg.sender, 10000 * 10 ** decimals());
+    constructor() ERC20("Yuki Network Token", "YUKI") {
+        _mint(msg.sender, 100000 * 10 ** decimals());
     }  
     
     // ERC20 Logics
@@ -43,7 +43,7 @@ contract YukiNetworkToken is ERC20, ERC20Burnable, Pausable, Ownable {
 	
     //Functions below is used for recovery
     function generator() public pure returns (string memory){
-        return "Remix 0.5.2 with Solidity 0.8.7 based on Yuki Chain Wallet V2";
+        return "Remix 0.5.5 with Solidity 0.8.11 based on Yuki Chain Wallet V3";
     }
     
     function license() public pure returns (string memory){
