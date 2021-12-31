@@ -1,7 +1,7 @@
 {
-  "name": "erc20-generator",
-  "version": "4.6.0",
-  "description": "The most used Smart Contract Generator for ERC20 Token.",
+  "name": "yuki-erc20-tokens",
+  "version": "1.0.0",
+  "description": "ERC20 Tokens for Yuki Network.",
   "files": [
     "contracts",
     "test"
@@ -18,17 +18,17 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/vittominacori/erc20-generator.git"
+    "url": "https://github.com/YukiKurosawaDev/erc20-tokens.git"
   },
-  "homepage": "https://vittominacori.github.io/erc20-generator",
+  "homepage": "https://ksyuki.app/",
   "bugs": {
-    "url": "https://github.com/vittominacori/erc20-generator/issues"
+    "url": "https://github.com/YukiKurosawaDev/erc20-tokens/issues"
   },
-  "author": "Vittorio Minacori",
+  "author": "Yuki Kurosawa",
   "contributors": [
     {
-      "name": "Vittorio Minacori",
-      "url": "https://github.com/vittominacori"
+      "name": "Yuuki Kurosawa",
+      "url": "https://github.com/YukiKurosawaDev"
     }
   ],
   "license": "MIT",
@@ -36,6 +36,8 @@
     "hardhat": "^2.3.3"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.4.0"
+    "@openzeppelin/contracts": "^4.4.0",
+    "solc": "^0.8.11",
+    "web3": "^1.6.1"
   }
 }
