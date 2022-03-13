@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.7+commit.e28d00a7"
+		"version": "0.8.12+commit.f00d7308"
 	},
 	"language": "Solidity",
 	"output": {
@@ -127,9 +127,9 @@
 				"name": "decimals",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "uint8",
 						"name": "",
-						"type": "uint256"
+						"type": "uint8"
 					}
 				],
 				"stateMutability": "view",
@@ -308,11 +308,11 @@
 	},
 	"sources": {
 		"contracts/YERC20.sol": {
-			"keccak256": "0x843664f226f624b42a9b5e082aaefddbffb12d38dc44a2efbd7e6f5ccfad6377",
+			"keccak256": "0x58a8d8467f806e2dffd63fd4b493b55bb949c03df5e313195aa034fe0ed1891f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://760a68bd6fff754c1967609c785f3b89d85b69e2c01279e6cc1c0f7072e4bdd9",
-				"dweb:/ipfs/QmedpbiMTbsGyiUozBnuaxXdVNq851vHvRnSaLKXXC2evu"
+				"bzz-raw://53f0610270ba22288a493ab92cf79fd9b487b26072690f01de66d477e61f60a5",
+				"dweb:/ipfs/QmbACa6uJTGSCTsq36k8MXUhTC4px7pi3MfXVm3Qt2E8hq"
 			]
 		}
 	},
