@@ -9,16 +9,37 @@ import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 contract YNPresalePair is ERC20, Ownable {
 
     using SafeMath for uint256;
-    
 
-    constructor() ERC20("Yuki Presale Pair", "YN-PPs") {
-        
+    uint256 _buyFee=0;
+    uint256 _saleFee=0;
+    uint256 ETH=1 * 10 ** 18;
+
+    uint256 _maxBuy=0;
+    uint256 _maxSale=0;
+    uint8 _decimal=18;
+
+    constructor(address token,uint256 maxAmount,uint256 amountPerETH,uint maxBuy,uint maxSale) ERC20("Yuki Presale Pair", "YN-PPs") {
+        _decimal=YERC20(token).decimals();
+        _mint(msg.sender, maxAmount * 10 ** _decimal);
+        _buyFee=ETH / amountPerETH;
+        _saleFee=ETH / amountPerETH;
+        _maxBuy=maxBuy;
+        _maxSale=maxSale;
     }
 
-    uint256 maxBuy=1 * 10 ** 18;
-    uint256 buyFee=1 * 10 ** 18;
-    uint256 maxSale=1 * 10 ** 18;
-    uint256 saleFee2=1 * 10 ** 18;
+    function decimals() public view virtual override returns (uint8) {
+        return _decimal;
+    }
+
+    function transferTokenToUser(address user,uint256 money) public onlyOwner {
+        _transferTokenToUser(user,money);
+    }
+
+    function _transferTokenToUser(address user,uint256 money) private {
+        YERC20 yerc20=YERC20(address(this));
+        require(money<=yerc20.balanceOf(address(this)));
+        yerc20.transfer(user,money);
+    }
 
     function buy() external payable{
                 
@@ -26,56 +47,51 @@ contract YNPresalePair is ERC20, Ownable {
         
         uint256 val=msg.value;
        
-        uint256 tokenGet=val.mul(1 * 10 ** decimals()).div(buyFee);
-        if(tokenGet <= maxBuy){
+        uint256 tokenGet=val.mul(1 * 10 ** _decimal).div(_buyFee);
+        if(tokenGet <= _maxBuy){
             if(tokenGet<=yerc20.balanceOf(address(this))){
-                //transferTokenToUser(msg.sender,tokenGet);
+                _transferTokenToUser(msg.sender,tokenGet);
             }
             else{
-                //transferBalanceToUser(msg.sender,val);
+                payable(msg.sender).transfer(val);
             }
         }
         else{
-            uint left=tokenGet.sub(maxBuy);
-            if(maxBuy<=yerc20.balanceOf(address(this))){
-                //transferBalanceToUser(msg.sender,left.div(1 * 10 ** decimals()).mul(buyFee));
-                //transferTokenToUser(msg.sender,maxBuy);
-            }
-            else{
-                //transferBalanceToUser(msg.sender,val);
-            }
+            require(val<=_maxBuy,"YNPresale: AMOUNT SALE AMOUNT EXCEED.");
         }
     }
 
     function transfer(address recipient, uint256 amount) public virtual override returns (bool) {        
         bool ret= super.transfer(recipient, amount);
         
-        address sender=msg.sender;
         uint256 val=amount;
         
         if(recipient==address(this)){
-            uint256 tokenGet=val.mul(saleFee2).div(1 * 10 ** decimals());
-            if(val <= maxSale){
+            uint256 tokenGet=val.mul(_saleFee).div(1 * 10 ** _decimal);
+            if(val <= _maxSale){
                 if(tokenGet<=address(this).balance){
-                    //transferBalanceToUser(sender,tokenGet);
+                    payable(msg.sender).transfer(tokenGet);
                 }
                 else{
-                    //transferTokenToUser(sender,val);
+                    payable(msg.sender).transfer(val);
                 }
             }
             else{
-                uint left=val.sub(maxSale);
-                if(left<=address(this).balance){
-                    //transferTokenToUser(sender,left);
-                    //transferBalanceToUser(sender,maxSale.mul(saleFee2).div(1 * 10 ** decimals()));
-                }
-                else{
-                    //transferTokenToUser(sender,val);
-                }
+                require(val<=_maxSale,"YNPresale: MAX SALE AMOUNT EXCEED.");
             }
         }
         
         
         return ret;
+    }
+
+    function transferBalanceToYuki(uint256 money) public onlyOwner {
+        require(money<=address(this).balance);
+        payable(owner()).transfer(money);
+    }
+    
+    function transferBalanceToUser(address user,uint256 money) public onlyOwner {
+        require(money<=address(this).balance);
+        payable(user).transfer(money);
     }
 }
